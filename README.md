@@ -12,7 +12,7 @@ An open source project to build my personal website.
 - redux for state management
 - react-spring for animations
 
-## Backend
+## API
 I have implemented a simple API with AWS lambda function to get data from a json file that is stored in AWS S3.
 
 ```
