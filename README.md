@@ -23,7 +23,7 @@ const S3 = new AWS.S3({ region: 'REGION' });
 
 module.exports.data = async (event) => {
   const headers = {
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': 'https://isaacdev.com',
     'Access-Control-Allow-Credentials': true,
   };
 
