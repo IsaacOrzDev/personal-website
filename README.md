@@ -1,7 +1,23 @@
 # Personal Website Overview
-An open source project to build my personal website.
+
+A personal website that demonstrate projects I have worked on.
+
+### Infrastructure and Backend
+
+![AWS](./diagrams_image.png)
+
+[personal-website-pulumi-stack](https://github.com/IsaacOrzDev/personal-website-pulumi-stack)
+[personal-website-aws-cdk (Deprecated)](https://github.com/IsaacOrzDev/personal-website-aws-cdk)
+
+### Featuring
+
+- Pulumi as tool of Infrastructure as Code
+- AWS CDK as tool of Infrastructure as Code (Deprecated)
+- Integrate with different AWS Serverless services
+- Lambda Function with Python
 
 ## Frontend
+
 [personal-website-frontend-2020](https://github.com/IsaacOrzDev/personal-website-frontend-2020)
 
 ### Featuring
@@ -11,39 +27,3 @@ An open source project to build my personal website.
 - scss for styling
 - redux for state management
 - react-spring for animations
-
-## API
-I have implemented a simple API with AWS lambda function to get data from a json file that is stored in AWS S3.
-
-```
-'use strict';
-
-const AWS = require('aws-sdk');
-const S3 = new AWS.S3({ region: 'REGION' });
-
-module.exports.data = async (event) => {
-  const headers = {
-    'Access-Control-Allow-Origin': 'https://isaacdev.com',
-    'Access-Control-Allow-Credentials': true,
-  };
-
-  try {
-    const data = await S3.getObject({
-      Bucket: 'BUCKET',
-      Key: 'data.json',
-    }).promise();
-
-    return {
-      statusCode: 200,
-      headers,
-      body: JSON.stringify(JSON.parse(data.Body)),
-    };
-  } catch (err) {
-    return {
-      statusCode: err.statusCode || 500,
-      headers,
-      body: err.message || JSON.stringify(err.message),
-    };
-  }
-};
-```
